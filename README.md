@@ -66,6 +66,14 @@ source virtualenv/bin/activate
 python3 manage.py runserver 0.0.0.0:8000
 ```
 
+### Closing Server
+Go into Terminal:
+hit `control` + `C` on the keyboard
+```
+deactivate
+exit
+```
+
 ## References:
 1. [Django](https://www.djangoproject.com/)
 2. [Psycopg2](https://www.psycopg.org/docs/)
