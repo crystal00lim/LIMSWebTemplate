@@ -1,0 +1,220 @@
+// https://dbdiagram.io/d/e-commerce-database-schema-6320585c0911f91ba59a41d4
+
+// Django & Core Tables
+Table auth_group {
+  id integer [primary key]
+  name varchar(150) [not null, unique]
+}
+
+Table auth_group_permissions {
+  id bigint [primary key]
+  group_id integer [not null]
+  permission_id integer [not null]
+}
+
+Table auth_permission {
+  id integer [primary key]
+  name varchar(255) [not null]
+  content_type_id integer [not null]
+  codename varchar(100) [not null]
+}
+
+Table auth_user {
+  id integer [primary key]
+  password varchar(128) [not null]
+  last_login timestamp
+  is_superuser boolean [not null]
+  username varchar(150) [not null, unique]
+  first_name varchar(150) [not null]
+  last_name varchar(150) [not null]
+  email varchar(254) [not null]
+  is_staff boolean [not null]
+  is_active boolean [not null]
+  date_joined timestamp [not null]
+}
+
+Table auth_user_groups {
+  id bigint [primary key]
+  user_id integer [not null]
+  group_id integer [not null]
+}
+
+Table auth_user_user_permissions {
+  id bigint [primary key]
+  user_id integer [not null]
+  permission_id integer [not null]
+}
+
+Table django_admin_log {
+  id integer [primary key]
+  action_time timestamp [not null]
+  object_id text
+  object_repr varchar(200) [not null]
+  action_flag smallint [not null]
+  change_message text [not null]
+  content_type_id integer
+  user_id integer [not null]
+}
+
+Table django_content_type {
+  id integer [primary key]
+  app_label varchar(100) [not null]
+  model varchar(100) [not null]
+}
+
+Table django_migrations {
+  id bigint [primary key]
+  app varchar(255) [not null]
+  name varchar(255) [not null]
+  applied timestamp [not null]
+}
+
+Table django_session {
+  session_key varchar(40) [primary key]
+  session_data text [not null]
+  expire_date timestamp [not null]
+}
+
+Ref: auth_group_permissions.permission_id > auth_permission.id
+Ref: auth_group_permissions.group_id > auth_group.id
+Ref: auth_permission.content_type_id > django_content_type.id
+Ref: auth_user_groups.group_id > auth_group.id
+Ref: auth_user_groups.user_id > auth_user.id
+Ref: auth_user_user_permissions.permission_id > auth_permission.id
+Ref: auth_user_user_permissions.user_id > auth_user.id
+Ref: django_admin_log.user_id > auth_user.id
+Ref: django_admin_log.content_type_id > django_content_type.id
+
+// Doxypep Schema Tables
+Table doxypep_culture {
+  id bigint [primary key]
+  visit_num integer [not null]
+  timepoint_id varchar(11) [not null]
+  phar_sa boolean
+  rec_sa boolean
+  rec_mac boolean
+  rec_esbl boolean
+  nas_sa boolean
+  vag_sa boolean
+  vag_mac boolean
+  vag_esbl boolean
+  date timestamp [not null]
+  notes text
+  participant_id_id bigint [not null]
+}
+
+Table doxypep_isolate {
+  id bigint [primary key]
+  original_label varchar(25)
+  sample_type varchar(10) [not null]
+  isolate_num integer [not null]
+  date timestamp [not null]
+  box varchar(25) [not null]
+  position integer [not null]
+  status varchar(3) [not null]
+  notes text
+  timepoint_id_id bigint [not null]
+}
+
+Table doxypep_kb {
+  id bigint [primary key]
+  gentamicin integer [not null]
+  erithromycin integer [not null]
+  tetracycline integer [not null]
+  minocycline integer [not null]
+  doxycycline integer [not null]
+  clindamycin integer [not null]
+  cefoxitin integer [not null]
+  oxacillin integer [not null]
+  date timestamp [not null]
+  notes text
+  isolate_num_id bigint [not null]
+}
+
+Table doxypep_participant {
+  id bigint [primary key]
+  participant_id varchar(8) [not null]
+  status boolean [not null]
+  treatment boolean
+  participant_type boolean
+}
+
+Table doxypep_taggedarg {
+  id bigint [primary key]
+  tag_id integer [not null]
+  content_object_id bigint [not null]
+}
+
+Table doxypep_wgs {
+  id bigint [primary key]
+  date_sequenced timestamp [not null]
+  date_collected timestamp [not null]
+  sequence_type varchar(25) [not null]
+  depth double [not null]
+  need_resequencing boolean
+  organism varchar(50) [not null]
+  isolate_num_id bigint [not null]
+}
+
+Ref: doxypep_culture.participant_id_id > doxypep_participant.id
+Ref: doxypep_isolate.timepoint_id_id > doxypep_culture.id
+Ref: doxypep_kb.isolate_num_id > doxypep_isolate.id
+Ref: doxypep_wgs.isolate_num_id > doxypep_isolate.id
+
+Table taggit_tag {
+  id integer [primary key]
+  name varchar(100) [not null, unique]
+  slug varchar(100) [not null, unique]
+}
+
+Table taggit_taggeditem {
+  id integer [primary key]
+  object_id integer [not null]
+  content_type_id integer [not null]
+  tag_id integer [not null]
+}
+
+Ref: taggit_taggeditem.tag_id > taggit_tag.id
+Ref: taggit_taggeditem.content_type_id > django_content_type.id
+
+// Freedberg Schema Tables
+Table freedberg_culture {
+  id bigint [primary key]
+  vre_blue boolean [not null]
+  vre_pink boolean [not null]
+  kpc_blue boolean [not null]
+  kpc_pink boolean [not null]
+  kpc_white boolean [not null]
+  date timestamp [not null]
+  notes text
+  sample_id_id bigint [not null]
+}
+
+Table freedberg_isolate {
+  id bigint [primary key]
+  isolate_id varchar(7) [not null]
+  isolate_type varchar(10) [not null]
+  box varchar(25) [not null]
+  position integer [not null]
+  status varchar(3) [not null]
+  date timestamp [not null]
+  notes text
+  sample_id_id bigint [not null]
+}
+
+Table freedberg_sample {
+  id bigint [primary key]
+  sample_id varchar(6) [not null]
+  sample_num integer [not null]
+  sample_type varchar(3) [not null]
+  sixteen_s boolean [not null]
+  extraction boolean
+  sixteen_s_finished boolean [not null]
+  date timestamp [not null]
+  box integer [not null]
+  position varchar(2) [not null]
+  notes text
+}
+
+Ref: freedberg_culture.sample_id_id > freedberg_sample.id
+Ref: freedberg_isolate.sample_id_id > freedberg_sample.id

@@ -1,0 +1,241 @@
+:root {
+  --darkblue: #012169;
+  --mediumblue: #378DDD;
+  --lightblue: #6CACE4;
+  --white: #FFFFFF;
+  --highlight: #D4285B;
+  --add: #259B9A;
+  --addicon: url('../components/add.svg');
+}
+
+.logo {
+    width: 35rem;
+    height: 3rem;
+    background-color: var(--darkblue);
+    mask-image: url('../components/logo.svg');
+    mask-size: contain;
+    mask-repeat: no-repeat;
+    mask-position: center;
+}
+
+#header {
+    background-color: var(--lightblue);
+}
+
+#user-tools {
+    color: var(--darkblue);
+    font-weight: 500;
+    font-size: 1rem;
+}
+
+#user-tools a:link, #user-tools a:visited {
+    color: var(--white);
+    font-size: 1rem;
+    font-weight: 400;
+}
+
+h1 {
+    color: var(--darkblue);
+    font-weight: 600;
+}
+
+#content-related {
+    background: var(--mediumblue);
+}
+
+#content-related .module h2 {
+    border-bottom: 1px solid var(--darkblue);
+    color: var(--darkblue);
+}
+
+#content-related .module h3, .actionlist a:visited, .actionlist a:link, .actionlist {
+    color: var(--darkblue);
+}
+
+.quiet {
+    color: var(--white);
+}
+
+.module caption, .module h2 {
+    font-size: 1.05rem;
+    font-weight: 500;
+    background-color: var(--mediumblue);
+}
+
+#logout-form button {
+    color: var(--white);
+    font-size: 1rem;
+    font-weight: 400;
+}
+
+a.section:link, a.section:visited {
+    color: var(--darkblue);
+    text-decoration: none;
+}
+
+body {
+    background-color: var(--white);
+    color: black;
+}
+
+div.breadcrumbs {
+    background: var(--mediumblue);
+}
+
+#nav-sidebar .current-app .section:link {
+    font-weight: bold;
+    color: var(--darkblue);
+}
+
+ #nav-sidebar .current-app .section:visited {
+    font-weight: bold;
+    color: var(--white);
+ }
+
+input[type=submit].default, .submit-row input.default {
+    background: var(--mediumblue);
+}
+
+input[type=submit].default:hover, input[type=submit]:hover {
+    background: var(--darkblue);
+}
+
+input[type=submit], .submit-row input {
+    background: var(--lightblue);
+}
+
+a:link, a:visited {
+    color: var(--mediumblue);
+}
+
+a:hover {
+    color: var(--darkblue);
+}
+
+a:active {
+    color: var(--highlight);
+}
+
+#nav-sidebar tr {
+    background-color: #FFFFFF !important;
+}
+
+#nav-sidebar tr:nth-child(even) {
+    background-color: #F8F9FA !important; 
+}
+
+.module table tr:nth-child(odd) {
+    background-color: var(--white) !important;
+}
+
+.module table tr {
+    background-color: #F8F9FA !important;
+}
+
+.module table th, .module table td {
+    border-color: var(--mediumblue);
+}
+
+#nav-sidebar .current-model,
+#nav-sidebar .current-model th,
+#nav-sidebar .current-model a {
+    background-color: inherit !important;
+}
+
+#nav-sidebar .current-model a {
+    color: var(--highlight) !important; 
+    font-weight: bold;
+}
+
+.object-tools a:link, .object-tools a:visited {
+    background: var(--add);
+}
+
+.object-tools a.addlink {
+    padding-right: 12px;
+}
+
+.toggle-nav-sidebar {
+    background-color: var(--white);
+    border-right: 1px solid var(--lightblue);
+}
+
+.toggle-nav-sidebar:hover, .toggle-nav-sidebar:focus {
+    background-color: var(--lightblue);
+}
+
+#nav-sidebar, #nav-filter {
+    background: var(--white);
+    border: 0px;
+}
+
+#changelist .actions, 
+#changelist .changelist-form-container, 
+.action-select {
+    background: var(--white) !important;
+}
+
+#changelist .changelist-form-container #changelist-filter {
+    background: #F8F9FA;
+}
+
+#toolbar{
+    background: #F8F9FA !important;
+    border-bottom: 1px solid var(--lightblue);
+    color: var(--darkblue);
+}
+
+#toolbar form input[type=submit], #changelist .actions .button {
+    background: var(--mediumblue) !important;
+    color: var(--white) !important;
+    border: 0px !important;
+}
+
+#changelist .actions {
+    color: var(--darkblue) !important;
+}
+
+#toolbar #searchbar, #changelist .actions select {
+    border: 0px !important;
+    background: var(--lightblue) !important;
+}
+
+thead th, thead th a:link, thead th a:visited {
+    background: var(--white) !important;
+    color: var(--darkblue) !important;
+}
+
+thead tr {
+    color: var(--darkblue) !important;
+}
+
+#changelist-filter li.selected {
+    border-left: 5px solid var(--highlight) !important;
+}
+
+#changelist-filter li a:link, 
+#changelist-filter li a:visited, 
+#changelist-filter a {
+    color: var(--darkblue) !important;
+}
+
+#changelist-filter li a:hover,
+#changelist-filter a:hover {
+    color: var(--highlight) !important;
+}
+
+input[type="checkbox"] {
+    appearance: none;
+    width: 16px;
+    height: 16px;
+    border: 1px solid var(--darkblue);
+    background-color: transparent !important;
+    border-radius: 3px;
+    cursor: default;
+}
+
+input[type=checkbox]:checked {
+    background-color: var(--mediumblue) !important;
+    border: 0px;
+}
+

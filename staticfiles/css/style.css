@@ -1,0 +1,22 @@
+.header {
+    justify-content: center;
+    text-align: center;
+    margin: 0;
+    padding: 25px;
+}
+
+.header img {
+    padding: 25px;
+}
+
+.row {
+    margin: 0%;
+    display: flex;
+    flex-wrap: nowrap;
+}
+
+#data-table {
+    width: 100%;
+    table-layout: fixed;
+    border-collapse: collapse;
+}
