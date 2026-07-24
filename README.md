@@ -57,7 +57,6 @@ For current iMac:
 ssh uhlemann@156.145.55.229
 ```
 
-Password: core1234
 **You won't be able to see what you type when entering in the password**
 
 ```
